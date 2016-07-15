@@ -1,0 +1,32 @@
+{
+  "name": "hilitor",
+  "version": "0.0.1",
+  "description": "javascript highlighting",
+  "main": "hilitor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mjhost@github.com/mjhost/hilitor.git"
+  },
+  "keywords": [
+    "javascript",
+    "highlighting"
+  ],
+  "author": {
+    "name" : "Chirp Internet",
+    "url" : "http://www.chirp.com.au/"
+  },
+  "contributors":[
+    {"name":"Ger Hobbelt", "email":"ger@hobbelt.com"},
+    {"name":"Francesco Strazzullo", "email":"me@francescostrazzullo.info"},
+    {"name":"Ruben", "email":"Ruben@e-motiv.net"},
+    {"name":"Paolo", "email":"paolo.mariotti@sourcesense.com"}
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjhost/hilitor/issues"
+  },
+  "homepage": "https://github.com/mjhost/hilitor#readme"
+}

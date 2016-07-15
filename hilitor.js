@@ -38,7 +38,7 @@
     options = options || {};
 
 
-    var hiliteTag = options.tag || "EM";
+    var hiliteTag = options.tag.toUpperCase() || "EM";
     var hClass = options.hClass || "hilitor";
     var skipTags = new RegExp("^(?:SCRIPT|FORM|INPUT|TEXTAREA|IFRAME|VIDEO|AUDIO)$");
     var wordN = [];
@@ -46,7 +46,7 @@
     var matchRegex = "";
     var openLeft = true;
     var openRight = true;
-    
+
     if (typeof options.onStart !== 'function') {
       options.onStart = function() { /* return FALSE when you want to abort */ };
     }
@@ -142,16 +142,16 @@
         arr = document.querySelectorAll(hiliteTag + "." + hClass);
         i = 0;
         while (i < arr.length && (el = arr[i])) {
-          // store the reference to the parent of the hilite tag as that node itself, 
+          // store the reference to the parent of the hilite tag as that node itself,
           // and all its links, is invalidated in the next .replaceChild() call:
           var parentNode = el.parentNode;
           if (!parentNode) {
             i++;
-            // this entry would otherwise crash in the code below; we can however improve 
+            // this entry would otherwise crash in the code below; we can however improve
             // on the total run-time costs by cutting back on the number of times we trigger
             // the outer loop (which serves as a recovery mechanism anyway) by continuing
             // with this querySelectorAll()'s results, but at it's higher indexes, which
-            // are very probably still valid/okay. This saves a number of outer loops and 
+            // are very probably still valid/okay. This saves a number of outer loops and
             // thus a number of querySelectorAll calls.
             continue;
           }
@@ -167,7 +167,10 @@
     };
 
     // start highlighting at target node
-    this.apply = function(input, elements = [document.body]) {
+    this.apply = function(input, elements) {
+      if(!elements){
+        elements = [document.body];
+      }
       // always remove all highlight markers which have been done previously
       if (!input) {
         return false;
@@ -185,7 +188,7 @@
         var targetNode = elements[i];
         targetNode.normalize();
         this.hiliteWords(targetNode);
-      };
+      }
 
       // ensure all text node series are merged, etc. so that we don't have to bother with fragmented texts in the search/scan.
       return options.onFinish.call(this);
